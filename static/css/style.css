@@ -1,0 +1,261 @@
+@font-face {
+  font-family: "nyt-cheltenham";
+  src: local("Cheltenham"), local("Cheltenham Roman"),
+    url(path/to/nyt-cheltenham.woff) format("woff");
+}
+
+::selection{
+  color: #fff;
+  background: #5B8C51;
+}
+
+/* * {
+  font-family: "nyt-cheltenham", Georgia, "Times New Roman", Times, serif;
+} */
+
+@media (max-width: 768px) {
+  /* Change the font size to 16px for all elements */
+  * {
+    font-size: 16px;
+  }
+}
+
+.container {
+  overflow-x: hidden;
+}
+
+.container-xxl iframe {
+  width: 100%;
+  padding-bottom: 0%;
+
+}
+
+
+@media (max-width: 768px) {
+  .container-xxl iframe {
+    height: 300px;
+    padding-bottom: 0;
+  }
+}
+
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #5b8c51
+}
+
+.profile-button {
+  background: #5b8c51;
+  box-shadow: none;
+  border: none
+}
+
+.profile-button:hover {
+  background: #5b8c51;
+  color: #fff;
+
+}
+
+.profile-button:focus {
+  background: #5b8c51;
+  box-shadow: none
+}
+
+.profile-button:active {
+  background: #5b8c51;
+  box-shadow: none
+}
+
+.back:hover {
+  color: #5b8c51;
+  cursor: pointer
+}
+
+.labels {
+  font-size: 11px
+}
+
+.add-experience:hover {
+  background: #5b8c51;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #5b8c51
+}
+:root {
+  --primary: #5b8c51;
+  --secondary: #869183;
+  --light: #f7f7f7;
+  --dark: #404a3d;
+}
+
+.back-to-top {
+  position: fixed;
+  display: none;
+  right: 30px;
+  bottom: 30px;
+  z-index: 99;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.fw-medium {
+  font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+  font-weight: 500 !important;
+}
+
+/*** Spinner ***/
+#spinner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
+  z-index: 99999;
+}
+
+#spinner.show {
+  transition: opacity 0.5s ease-out, visibility 0s linear 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+/*** Button ***/
+.btn {
+  transition: 0.5s;
+  font-weight: 500;
+}
+
+.btn-primary,
+.btn-outline-primary:hover {
+  color: var(--light);
+}
+
+.btn-secondary,
+.btn-outline-secondary:hover {
+  color: var(--dark);
+}
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-lg-square {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar.sticky-top {
+  top: -100px;
+  transition: 0.5s;
+
+  }
+
+.navbar .navbar-nav .nav-link {
+  margin-right: 35px;
+  padding: 4px 0;
+  color: var(--dark);
+  font-size: 18px;
+  font-weight: 500;
+  outline: none;
+}
+  .current {
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+.current:after {
+    content: "";
+    display: block;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% );
+}
+
+
+@media (min-width: 450px) {
+  .navbar-crop {
+    padding-left: 1.65rem;
+    padding-right: 0.65rem;
+  }
+  .navbar-logo {
+    padding-left: 2rem;
+  }
+}
+
+
+@media screen and (max-width: 991.98px) {
+  .current {
+    position: relative; /* Add position relative */
+  }
+  
+  .current:after {
+    content: "";
+    display: block;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Reduce the width to fit inside the mobile screen */
+  }
+  
+  .navbar-nav {
+    text-align: center; /* Center align the navbar items */
+    margin: 10px 0; /* Add some margin to separate from the top and bottom */
+  }
+  
+  .nav-item {
+    display: block;
+    margin: 10px 0; /* Add some margin between the items */
+  }
+}
+
+
+.disease_image{
+  display: inline-block;
+	max-width: 98%;
+	height: auto;
+	width: 22%;
+	margin: 1%;
+  border-radius: 10px;
+
+}
+
+.image_disease_page{
+  display: block;
+	max-width: 100%;
+	height: auto;
+	width: 98%;
+  border-radius: 10px;
+}
+
+
+

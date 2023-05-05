@@ -1,0 +1,160 @@
+/* Import Google font - Poppins */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'); */
+.image_upload{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  font-family: "Poppins", sans-serif;
+}
+
+@font-face {
+  font-family: "nyt-cheltenham";
+  src: local("Cheltenham"), local("Cheltenham Roman"),
+    url(path/to/nyt-cheltenham.woff) format("woff");
+}
+
+#piechart {
+  width: 100%;
+  height: auto;
+}
+
+::selection{
+  color: #fff;
+  background: #5B8C51;
+}
+
+.wrapper{
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.05);
+}
+.wrapper header{
+  color: #5B8C51;
+  font-size: 27px;
+  font-weight: 600;
+  text-align: center;
+}
+.wrapper form{
+  height: 167px;
+  display: flex;
+  cursor: pointer;
+  margin: 30px 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 2px dashed #5B8C51;
+}
+form :where(i, p){
+  color: #5B8C51;
+}
+form i{
+  font-size: 50px;
+}
+form p{
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+section .row{
+  margin-bottom: 10px;
+  background: #E9F0FF;
+  list-style: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+section .row i{
+  color: #5B8C51;
+  font-size: 30px;
+}
+section .details span{
+  font-size: 14px;
+}
+.progress-area .row .content{
+  width: 100%;
+  margin-left: 15px;
+}
+.progress-area .details{
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  justify-content: space-between;
+}
+.progress-area .content .progress-bar{
+  height: 6px;
+  width: 100%;
+  margin-bottom: 4px;
+  background: #fff;
+  border-radius: 30px;
+}
+.content .progress-bar .progress{
+  height: 100%;
+  width: 0%;
+  background: #5B8C51;
+  border-radius: inherit;
+}
+.uploaded-area{
+  max-height: 232px;
+  overflow-y: scroll;
+}
+.uploaded-area.onprogress{
+  max-height: 150px;
+}
+.uploaded-area::-webkit-scrollbar{
+  width: 0px;
+}
+.uploaded-area .row .content{
+  display: flex;
+  align-items: center;
+}
+.uploaded-area .row .details{
+  display: flex;
+  margin-left: 15px;
+  flex-direction: column;
+}
+.uploaded-area .row .details .size{
+  color: #404040;
+  font-size: 11px;
+}
+.uploaded-area i.fa-check{
+  font-size: 16px;
+}
+
+
+
+@media (max-width: 1225px) {
+  #histogram .chartjs-size-monitor,
+  #histogram .chartjs-size-monitor-expand,
+  #histogram .chartjs-size-monitor-shrink,
+  .chartjs-hidden-iframe,
+  .y-axis-label,
+  .x-axis-label {
+    display: none !important;
+  }
+}
+
+
+
+
+
+
+@media (max-width: 575px) {
+  #equalized-histogram {
+    width: 100%;
+    height: 150px;
+  }
+  #equalized-histogram .chartjs-size-monitor, #histogram .chartjs-size-monitor-expand, #histogram .chartjs-size-monitor-shrink {
+    display: none !important;
+  }
+  #equalized-histogram .chartjs-hidden-iframe {
+    display: none !important;
+  }
+}

@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block title %} Sugarcane disease detector | Sugarcane Diseases Prediction System  {% endblock title%}
+
+{% block body%}
+
+
+    <!-- Details about website -->
+    <div class="container-xxl py-5" >
+        <div class="container">
+            <div class="row g-5 align-items-end">
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <div class="col-6 position-relative wow fadeIn" data-wow-delay="0.7s">
+                            <div class="about-experience rounded text-light" style="background: rgb(16 52 19)" >
+                                <h1 class="display-1 text-light mb-0">50+</h1>
+                                <small class="fs-5 fw-bold">Diseases</small>
+                            </div>
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
+                            <img class="img-fluid rounded" src="/static/img/d1.png">
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
+                            <img class="img-fluid rounded" src="/static/img/Red Rot.jpg">
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.5s">
+                            <img class="img-fluid rounded" src="/static/img/leaf_rust.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <!-- <p class="section-title bg-white text-start text-primary pe-3">About Us</p> -->
+                    <h1 class="mb-4">Know About Sugarcane Diseases</h1>
+                    <p class="mb-4"><a href="https://agri.sindh.gov.pk/diseases-of-sugarcane-their-control" target="_blank">More than 50 diseases are reported in sugarcane</a>, fungi, bacteria,
+                        viruses and nematodes cause the most destructive diseases. These all diseases are injurious in
+                        some areas, in some years and on some plant parts. All parts of plant are subject to disease and
+                        one or more diseases can occur on virtually every plant and in every field.</p>
+                    <div class="row g-5 pt-2 mb-5">
+                        <div class="col-sm-6">
+                            <img class="img-fluid mb-4" src="/static/img/service.png" alt="">
+                            <h5 class="mb-3">Dedicated Services</h5>
+                            <span>Sugarcane Diseases Detector</span>
+                            <span>Recommendation of treatment</span>
+                            
+                        </div>
+                    </div>
+                    <a class="btn btn-outline-success rounded-pill py-3 px-5" href="/service">Explore More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h2 class="section-title bg-white text-center text-primary px-3">Diseases</h2>
+                <br><br>
+                {% comment %} <h1 class="mb-5">Diseases that is common in sugarcane</h1> {% endcomment %}
+            </div>
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/leaf_rust.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/leaf_rust.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Leaf Rust</h4>
+                            <p class="mb-4">The disease causes wilting of canes. The affected canes show drying of leaves from top to bottom. 
+                                </p>
+                                <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Leaf Rust' %}">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                                
+                                
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/white_fly.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/white_fly.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">White Fly</h4>
+                            <p class="mb-4">The disease causes wilting of canes. The affected canes show drying of leaves from top to bottom. 
+                                </p>
+                                <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='White Fly' %}">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/Red_Rust.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/Red_Rust.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Red Rust</h4>
+                            <p class="mb-4">The disease causes wilting of canes. The affected canes show drying of leaves from top to bottom. 
+                                </p>
+                                <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Red Rust' %}">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/Yellow Leaf Virus.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/Yellow Leaf Virus.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Yellow Leaf Virus</h4>
+                            <p class="mb-4">The disease causes wilting of canes. The affected canes show drying of leaves from top to bottom. 
+                                </p>
+                                <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Yellow Leaf Virus' %}">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/leaf spot.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/leaf spot.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Leaf Spot</h5>
+                            <p class="mb-4">The disease may be characterised itself on leaves as small lesions, which gradually enlarge along mid rib and assure dark red to brown colour. </p>
+                            <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Leaf Spot' %}">
+                                <i class="bi bi-chevron-double-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/Red Rot.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/Red Rot.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Red Rot</h5>
+                            <p class="mb-4">The disease first appears as red bright lesions on mid rib of leaves and shows itself as drooping and changing of colour of upper leaves.</p>
+                            <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Red Rot' %}">
+                                <i class="bi bi-chevron-double-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gy-5 gx-4 mt-3 justify-content-md-center">
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/mite insect.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/mite insect.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Mite Insect</h4>
+                            <p class="mb-4">The disease causes wilting of canes. The affected canes show drying of leaves from top to bottom. 
+                                </p>
+                                <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Mite Insect' %}">
+                                    <i class="bi bi-chevron-double-right"></i>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/Bacterial Blight.jpg" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" src="/static/img/Bacterial Blight.jpg" alt="">
+                            </div>
+                            <h5 class="mb-3">Bacterial Blight</h5>
+                            <p class="mb-4">Mottling of young crown leaves showing a definite pattern of alternating dark and light green coloured patches of varying size and run parallel to the midrib of leaf. </p>
+                            <a class="btn btn-success rounded-circle" target="_blank" href="{% url 'disease_details' disease='Bacterial Blight' %}">
+                                <i class="bi bi-chevron-double-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+{%endblock body%}

@@ -1,0 +1,6 @@
+django
+opencv-python
+django-cors-headers
+tensorflow
+scikit-learn
+django-widget-tweaks

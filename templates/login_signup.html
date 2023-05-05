@@ -1,0 +1,108 @@
+
+{% extends 'base.html' %} {% load static %} 
+{% block title %} 
+{% if signin %}
+Sign In to Sddopenai 
+
+{% else %}
+Create Account to Sddopenai
+{% endif %}
+
+
+{% endblock title %}
+{% block body %}
+<link href="{% static 'css/auth.css' %}"  rel="stylesheet"/>
+
+<div class="container auth" id="container">
+  {% if signup %}
+
+  <div class="auth mt-3" align="center">
+    <div class="wrapper">
+      <div class="title">Create Account</div>
+      <form method="POST" action="" id="my-form">
+        {% csrf_token %}
+        <div class="field">
+          {{ form.username }}
+          <label>Username</label>
+        </div>
+        <div class="field">
+          {{ form.email}}
+          <label>Email</label>
+        </div>
+        <div class="field">
+          {{ form.password1 }}
+          <label>Enter Password</label>
+        </div>
+        <div class="field">
+          {{ form.password2 }}
+          <label>Confirm Password</label>
+        </div>
+        <div class="field">
+          <input
+            type="submit"
+            id="register"
+            name="register"
+            value="Sign Up"
+          />
+        </div>
+        <div class="signup-link">
+          Already have an account? <a href="{% url 'signin' %}" sty>Sign in now</a>
+        </div>
+
+        {% if error_signup %} {% for message in messages %}
+        <div class="alert alert-danger  mt-4" role="alert" style="">
+          <i class="fas fa-exclamation-circle"></i>
+          <a href="#" class="alert-link">Error Occured: {{message}}</a>
+        </div>
+        {% endfor %} {% endif %} 
+    </form>
+</div>
+</div>
+{% else %}
+
+  <div class="auth mt-3" align="center">
+    <div class="wrapper">
+      <div class="title">Sign In</div>
+      <form method="POST" action="" id="my-form">
+        {% csrf_token %}
+        <div class="field">
+            <input type="text" name="username" required />
+            <label>Username</label>
+        </div>
+        <div class="field">
+            <input type="password" name="password" required />
+            <label>Password</label>
+        </div>
+        <div class="field">
+          <input
+            type="submit"
+            id="signin"
+            name="signin"
+            value="Sign In"
+            
+          />
+        </div>
+        <div class="signup-link">
+          Don't have an account? <a href="{% url 'signup' %}">Sign up now</a>
+        </div>
+        {% if error_login %} {% for message in messages %}
+        <div class="alert alert-danger  mt-4" role="alert" style="margin-bottom: -10%;">
+          <i class="fas fa-exclamation-circle"></i>
+          <a href="#" class="alert-link">Error Occured: {{message}}</a>
+        </div>
+        {% endfor %} {% endif %} 
+    </form>
+  </div>
+  
+</div>
+
+{% endif %}
+
+
+</div>
+
+{% endblock body %}  
+
+
+
+

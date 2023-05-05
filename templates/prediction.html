@@ -1,0 +1,348 @@
+{% extends 'base.html' %} {% block title %} Detect Disease using sddopenai {% endblock title%} {% block body%}
+
+<link href="/static/css/image_upload.css" rel="stylesheet" />
+
+<div
+  class="progress_container"
+  style="
+    visibility: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(36, 36, 36, 0.8);
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    filter: blur(45%);
+  "
+>
+  <div
+    class="d-flex justify-content-center"
+    style="top: 50%; margin: 0px 35%; width: 30%; position: relative"
+  >
+    <div
+      id=""
+      class="spinner-border text-success"
+      style="width: 5rem; height: 5rem"
+      role="status"
+    ></div>
+  </div>
+</div>
+
+<div
+  class="container-fluid banner px-0"
+  data-parallax="scroll"
+  style="background: rgb(255, 255, 255)"
+>
+    <div class="container py-5 mt-3">
+      {% if uploaded %}
+      <div class="row g-5 py-5">
+        <div
+          class="col-lg-12 wow fadeIn"
+          data-wow-delay="0.2s"
+          style="margin: auto; background: rgb(255, 255, 255); padding: 30px 30px"
+        >
+          <div class="row g-4 align-items-center">
+            <div class="col-lg" >
+              <h2 class="mb-5">Sugarcane Diseases Detector</h2>
+              <p style="text-align: justify">
+                Fast and Accurate Diagnosis for Healthier Crops. Our AI-powered
+                technology can quickly detect and identify diseases in sugarcane
+                crops, helping farmers take proactive measures to protect their
+                harvests and increase yields. Try our easy-to-use platform today
+                and experience the benefits of cutting-edge agricultural
+                innovation.
+              </p>
+            </div>
+            <div class="col-lg">
+              <form
+                enctype="multipart/form-data"
+                method="post"
+                action="/uploaded"
+              >
+                {% csrf_token %}
+                
+                <div class="row g-3">
+                  <center>
+                    <div class="image_upload">
+                      <div class="wrapper">
+                        <header></header>
+                        <span>
+                          <input
+                            class="file-input"
+                            type="file"
+                            accept="image/*"
+                            name="original_image"
+                            id="original_image"
+                            required
+                            onchange="showPreview(event);"
+                            id="file-ip-1 subject original_image"
+                            style="display: none
+                            "
+                          />
+                          <label
+                            style="color: #5b8c51; cursor: pointer;"
+                            class="fa fa-cloud-upload-alt fa-3x"
+                            for="original_image"
+                          ></label>
+                        </span>
+          
+                        <p>Browse File to Upload</p>
+                        
+                        {% if errorfound_or_not %}
+                          <p style="color:red">{{errorfound}}</p>
+                        {% endif %}
+                          
+                        
+                        <section class="progress-area"></section>
+                        <section class="uploaded-area"></section>
+                        <div class="preview col-6 pb-3">
+                          <img
+                            id="file-ip-1-preview"
+                            class="img-fluid rounded"
+                            width="330"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div id="process" style="display: none">
+                      <button
+                        class="btn btn-outline-primary  py-3 px-5 mt-3"
+                        onclick="progress()"
+                        type="submit" style="  
+                        cursor: pointer;"
+                      >
+                        Detect Disease
+                      </button>
+                    </div>
+                  </center>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  <div class="container ">
+    
+    <h2>How to Use?</h2>
+    <center>
+  <div class="plyr__video-embed" id="player" style="border-radius: 10px; --plyr-color-main: #5b8c51;">
+    <iframe 
+      src="https://www.youtube.com/embed/O5K7yk7MMgM?autoplay=1"
+      allowfullscreen
+      allowtransparency
+      allow="autoplay"
+    ></iframe>
+  </div>
+    </center></div>
+
+  {% endif %} {% if preprocess_url %}
+  <div class="row align-items-center">
+    
+
+    {% comment %} <h1>Sugarcane Disease Detector</h1> {% endcomment %}
+    
+      <h1 class="py-4"  style="color: red;"> {{found_disease}}  Detected </h1>
+      <div class="col-4" >
+      <img
+            
+            width="230"
+            height="350"
+            src="/media/rgb_original_image/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+      <div  class="table-responsive col-8">
+        <table class="table  table-hover" >
+          <h3>Status of Disease</h3>
+          <thead>
+            <th scope="row">S.No</th>
+            <th colspan="2">Label</th>
+            <th colspan="2">Result</th>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td colspan="2">Severety</td>
+              <td colspan="2">{{Severe}}</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td colspan="2">Total Number of Spots</td>
+              <td colspan="2">{{Num_of_contour}}</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Leaf Area</td>
+              <td colspan="2">{{leaf_Area}} cm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td colspan="2">Infected Region Area</td>
+              <td colspan="2">{{infected_area}} cm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td colspan="2">Ratio</td>
+              <td colspan="2">{{Ratio}} %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      {% comment %} <div class="col-lg-4">
+        <canvas id="myChart_contour"></canvas>
+      </div> {% endcomment %}
+    </div>
+    <br />
+      <br />
+      <h2 align="center" >Disease Classification</h2>
+      {% comment %} <div id="piechart"  style="width: 100%; height: 360px; position: relative; overflow: hidden;"></div> {% endcomment %}
+      <!-- Create a canvas element for the chart -->
+      <canvas id="Piechart_JS" style="width: 100%; height: 360px; position: relative; overflow: hidden;"></canvas>
+
+      <br />
+      <br />
+    
+    <h4>Symptoms</h5>
+    <p style="text-align: justify">{{symptoms }}</p>
+    <h4>What caused it?</h5>
+    <p style="text-align: justify">{{caused }}</p>
+    <h4>Organic Control</h5>
+    <p style="text-align: justify">{{organic_control }}</p>
+    <h4>Chemical Control</h5>
+    <p style="text-align: justify">{{chemical_control }}</p>
+    <h4>Preventive Measures</h5>
+
+        {% comment %} <ol id="list" > {% endcomment %}
+          {% for measure in preventive_measures %}
+            <li class="treatment_li">{{ measure }}.</li>
+          {% endfor %}
+        {% comment %} </ol> {% endcomment %}
+  
+      
+
+    <center>
+      
+      <div style="display: none" id="displaytable" class="mt-3">
+      <h2>Image Analysis</h2>
+      <br />
+
+      <!--Origianl Image and Removed Background image -->
+      <div class="row align-items-center">
+        <div class="col-6 pb-5">
+          <h4>Source Image</h4>
+          <img
+            width="330"
+            src="/media/rgb_original_image/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h4>Edited Image</h4>
+          <img
+            width="330"
+            src="/media/Removed_bg_Images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+      {% comment %} </div> {% endcomment %}
+
+      <!-- GrayScale -->
+      {% comment %} <div class="row align-items-center"> {% endcomment %}
+        <div class="col-6 pb-5">
+          <h4>GrayScale Image</h4>
+          <img
+            width="330"
+            src="/media/GrayScale_Images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h3>Histogram</h3>
+          <canvas id="histogram"></canvas>
+        </div>
+      {% comment %} </div> {% endcomment %}
+
+      <!-- Equalized -->
+      {% comment %} <div class="row align-items-center"> {% endcomment %}
+        <div class="col-6 pb-5">
+          <h4>Equalized Image</h4>
+          <img
+            width="330"
+            src="/media/Equalized_Images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h3>Histogram</h3>
+          <canvas id="equalized-histogram"></canvas>
+
+        </div>
+      {% comment %} </div> {% endcomment %}
+      {% comment %} <div class="row align-items-center  wow fadeInUp"> {% endcomment %}
+        <div class="col-6 pb-5">
+          <h4>Binary Image</h4>
+          <img
+            width="330"
+            src="/media/binary_Images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h4>Morphological Image</h4>
+          <img
+            width="330"
+            src="/media/morphological_images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+      {% comment %} </div> {% endcomment %}
+
+      <!-- draw contour or spoton original and black image-->
+      {% comment %} <div class="row align-items-center  wow fadeInUp"> {% endcomment %}
+        <div class="col-6 pb-5">
+          <h4>Spots on Original Image</h4>
+          <img
+            width="330"
+            src="/media/spot_on_org_images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+        <div class="col-6 pb-5">
+          <h4>Spots on Black Background</h4>
+          <img
+            width="330"
+            src="/media/spot_on_black_images/{{preprocess_url}}"
+            class="img-fluid rounded"
+          />
+        </div>
+      </div>
+    </div>
+    </center>
+    <div class="row">
+        <div class="row  wow fadeInUp justify-content-center"  >
+          <input
+            type="button"
+            class="btn btn-outline-primary py-3 btn-small col col-sm-3 px-5 m-3"
+            id="Detail"
+            onclick="myfunction();"
+            value="Image Analysis"
+          />
+          <a class="btn btn-primary py-3 px-5 btn-small col col-sm-3 m-3" href="/uploaded"
+            >Return Back</a
+          >
+          {% comment %} <a
+            class="btn btn-primary py-3 px-5 btn-small col-sm-3  m-3"
+            onclick="window.print()"
+            style="cursor: pointer"
+            >Save Report</a
+          > {% endcomment %}
+        </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{%endblock body%}

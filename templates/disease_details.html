@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ treatment.disease }} {% endblock title %}
+
+
+{% block body %}
+{% load static %}
+
+<div class="container mt-5">
+    <h1 class="pt-3">{{ treatment.disease }}</h1>
+    <div class="row">
+      <div class="col-lg-8">
+        <h4>Symptoms</h5>
+        <p style="text-align: justify">{{symptoms }}</p>
+        <h4 class="pt-3">What caused it?</h5>
+        <p style="text-align: justify">{{caused }}</p>
+        
+      </div>
+      <div class="col-lg-4">
+        {% if treatment.disease == 'Leaf Rust' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/leaf_rust.jpg' %}" alt="">
+        {% elif treatment.disease == 'Bacterial Blight' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Bacterial Blight.jpg' %}" alt="">
+        {% elif treatment.disease == 'Mite Insect' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/mite insect.jpg' %}" alt="">
+        {% elif treatment.disease == 'Red Rot' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Red Rot.jpg' %}" alt="">
+        {% elif treatment.disease == 'Leaf Spot' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Disease/leaf spot2.jpg' %}" alt="">
+        {% elif treatment.disease == 'Yellow Leaf Virus' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Disease/Yellow Leaf Virus3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Red Rust' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Disease/Red_Rust1.jpg' %}" alt="">
+        {% elif treatment.disease == 'White Fly' %}
+        <img class="img-fluid image_disease_page" src="{% static 'img/Disease/white_fly3.jpg' %}" alt="">
+        {% endif %}
+      </div>
+      <h4 class="pt-3">Organic Control</h5>
+        <p style="text-align: justify">{{organic_control }}</p>
+        <h4 class="pt-3">Chemical Control</h5>
+        <p style="text-align: justify">{{chemical_control }}</p>
+        <h4 class="pt-3">Preventive Measures</h5>
+        {% for measure in preventive_measures %}
+        <li class="treatment_li">{{ measure }}.</li>
+        {% endfor %}
+    </div>
+  
+        
+        <h4 class="pt-3">Disease Images</h4>
+        <div style=" max-width: 960px;">
+        {% if treatment.disease == 'Leaf Rust' %}
+            <img class="img-table-responsive disease_image " src="{% static 'img/leaf_rust.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image " src="{% static 'img/Disease/leaf_rust1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image " src="{% static 'img/Disease/leaf_rust2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image " src="{% static 'img/Disease/leaf_rust3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Bacterial Blight' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/Bacterial Blight.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Bacterial Blight1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Bacterial Blight2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Bacterial Blight3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Mite Insect' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/mite insect.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/mite insect1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/mite insect2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/mite insect3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Red Rot' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/Red Rot.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red Rot1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red Rot2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red Rot3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Leaf Spot' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/leaf spot.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/leaf spot1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/leaf spot2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/leaf spot3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Yellow Leaf Virus' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/Yellow Leaf Virus.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Yellow Leaf Virus1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Yellow Leaf Virus2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Yellow Leaf Virus3.jpg' %}" alt="">
+        {% elif treatment.disease == 'Red Rust' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/Red_Rust.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red_Rust1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red_Rust2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/Red_Rust3.jpg' %}" alt="">
+        {% elif treatment.disease == 'White Fly' %}
+            <img class="img-table-responsive disease_image" src="{% static 'img/white_fly.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/white_fly1.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/white_fly2.jpg' %}" alt="">
+            <img class="img-table-responsive disease_image" src="{% static 'img/Disease/white_fly3.jpg' %}" alt="">
+        {% endif %}
+        </div>
+    </div>  
+          
+{% endblock body %}

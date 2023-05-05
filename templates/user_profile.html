@@ -1,0 +1,170 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% load widget_tweaks %}
+{% block title %} Edit Profile {%endblock title %} 
+{% block body %} 
+{% comment %} {% if user_form.errors %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div id="form_errors">
+    {% for key, value in user_form.errors.items %}
+    <strong>{{ value }}</strong>
+    {% endfor %}
+  </div>
+</div>
+{% endif %} {% endcomment %}
+
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        {% if user.Profile.avatar %}
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="{{ user.Profile.avatar.url }}"
+        />
+        {% else %}
+        <img
+          class="rounded-circle mt-5"
+          width="150px"
+          src="{% static '/img/default.png' %}"
+        />
+        {% endif %}
+
+        <span class="font-weight-bold">{{user}}</span
+        ><span class="text-black-50">{{user.email}} </span><span> </span>
+      </div>
+    </div>
+
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5">
+
+        
+        {% if profile_setting %}
+                       
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">First Name</label>{{ user_form.first_name }}
+            </div>
+            <div class="col-md-6">
+              <label class="labels">Last Name</label>{{ user_form.last_name }}
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-md-12">
+              <label class="labels">Username<span style="color:red">*</span></label>{{ user_form.username }}
+            </div>
+            <div class="col-md-12">
+              <label class="labels">Email Address<span style="color:red">*</span></label>{{ user_form.email }}
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="text-center">
+              <button class="btn btn-success profile-button" type="submit">
+                Save Profile
+              </button>
+            </div>
+          </div>
+          {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-success mt-2">{{ message }}</div>
+          {% endfor %}
+          {% endif %}
+      
+          {% if error %}
+          {% for key, value in user_form.errors.items %}
+              {% for message in value %}
+              <div id="error-message"  class="text-center" style="font-size: 16px">
+                  <i class="fas fa-exclamation-circle" style="color: red">
+                  <label style="margin-top: 10px;text-decoration: none;">{{ message }}</label>
+                  </i>
+              </div>
+              {% endfor %}
+          {% endfor %}
+          {% endif %}
+
+        </form>
+        {% endif %}
+        
+        {% if change_passw %}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Change Password</h4>
+        </div>
+        <form method="post" enctype="multipart/form-data" class="form-responsive">
+          {% csrf_token %}
+          <div class="form-group row">
+            <div class="col-sm-12 col-md-6">
+              <label class="labels">Old Password<span style="color:red">*</span></label>
+              {{ form.old_password|add_class:'form-control' }}
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <label class="labels">New Password<span style="color:red">*</span></label>
+              {{ form.new_password1|add_class:'form-control' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12 col-md-6">
+              <label class="labels">Confirm New Password<span style="color:red">*</span></label>
+              {{ form.new_password2|add_class:'form-control' }}
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-primary mt-3">Change Password</button>
+            </div>
+          </div>
+          {% if success_updated %}
+            <div class="text-success mt-3" style="font-size:12px">
+              {{ success_message }}
+            </div>
+          {% endif %}
+          {% if error_message %}
+            <div class="text-danger mt-3" style="font-size:12px">
+              *{{ error_message }}
+            </div>
+          {% endif %}
+        </form>
+        
+        {% endif %}
+
+
+      </div>
+    </div>
+    <div class="col-md-4">
+        <div class="p-3 py-5">
+            {% comment %} <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br> {% endcomment %}
+            
+            {% if profile_setting %}
+            <div class="col-md-12"><a  href="" class="btn btn-success profile-button ">Profile Setting</a> <br><br>
+            <div class="col-md-12"><a href="change_password" class="btn" style="border: 1px solid #5b8c51;">Change Password</a></div>
+            
+            {% endif %}
+                
+                {% if change_passw %}
+                <div class="col-md-12"><a href="user_profile" class="btn " style="border: 1px solid #5b8c51;">Profile Setting</a> <br><br>
+                <div class="col-md-12"><a href="" class="btn  btn-success  profile-button">Change Password</a></div>
+                
+                {% endif %}
+                    
+            </div>
+    </div>
+
+    
+  </div>
+</div>
+</div>
+{% endblock body %}
+
+
+        
+
+         

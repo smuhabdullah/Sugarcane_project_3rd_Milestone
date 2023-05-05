@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %} Services  {% endblock title%}
+
+{% block body%}
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h2 class="section-title bg-white text-center text-primary px-3">Our Services</h2>
+                <br><br><br>
+                {% comment %} <h1 class="mb-5">Services That We Offer For Farmers</h1> {% endcomment %}
+            </div>
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-6 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/i3.jpg" alt="">
+        
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon p-4">
+                                <img class="img-fluid rounded-circle"  src="/static/img/i1.png" alt="">
+                                
+                            </div>
+                            <h5 class="mb-3">Sugarcane Disease Detector</h4>
+                            <p class="mb-4">All parts of plant are subject to disease and one or more diseases can occur on virtually every plant and in every field.</p>
+                            <a class="btn btn-success rounded-circle" href="/"><i class="bi bi-chevron-double-right" ></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src="/static/img/i2.png" alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                {% comment %} <i class="fa-solid fa-clipboard-medical img-fluid rounded-circle"></i> {% endcomment %}
+                            <img class="img-fluid rounded-circle" src="/static/img/i2.png" alt="">
+
+                            </div>
+                            <h5 class="mb-3">Recommendation of treatment</h5>
+                            <p class="mb-4">Treatment recommendation involves framing a question, 
+                                identifying management options and outcomes, collecting and summarizing evidence.</p>
+                            <a class="btn btn-success rounded-circle" href="/"><i class="bi bi-chevron-double-right" ></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+
+    <!-- Features Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h2 class="section-title bg-white text-start text-primary pe-3">Why Us!</h2>
+                    <br><br><br>
+                    {% comment %} <h1 class="mb-4">Few Reasons Why People Choosing Us!</h1> {% endcomment %}
+                    <p class="mb-4">This system facilitates the research work
+                        conducting for the purpose to overcome the sugarcane disease issues.</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Disease Detection</p>
+                    <p><i class="fa fa-check text-primary me-3"></i>Recommendation</p>
+                    <a class="btn btn-outline-success rounded-pill py-3 px-5 mt-3" href="">Explore More</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="rounded overflow-hidden">
+                        <div class="row g-0">
+                            <img class="img-fluid rounded" src="/static/img/sugarcane.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+{%endblock body%}

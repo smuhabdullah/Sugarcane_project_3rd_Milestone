@@ -1,0 +1,518 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock title%}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'img/apple-touch-icon.png' %}"
+    /> 
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'img/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'img/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}" />
+    <link
+      rel="mask-icon"
+      href="{% static 'img/safari-pinned-tab.svg' %}"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+    
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div
+        class="spinner-border text-primary"
+        role="status"
+        style="width: 3rem; height: 3rem"
+      ></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <!-- <div class="container-fluid  px-0">
+        <div class="row g-0 d-none d-lg-flex">
+            <div class="col-lg-6 ps-5 text-start">
+                <div class="h-100 d-inline-flex align-items-center text-dark">
+                    <span>Follow Us:</span>
+                    <a class="btn btn-link text-dark" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-link text-dark" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-link text-dark" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-link text-dark" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-end">
+                <div class="h-100  d-inline-flex align-items-center text-dark py-2 px-4">
+                    <span class="me-2 fw-semi-bold"><i class="fa fa-phone-alt me-2"></i>Call Us:</span>
+                    <span>+92 3421129003</span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark sticky-top px-4 px-lg-5"
+      style="background: rgb(16 52 19)"
+    >
+      <a
+        href="/"
+        class="navbar-brand d-flex align-items-center navbar-logo"
+        style=""
+      >
+        <img
+          src="{% static '/img/logo.png' %}"
+          class="rounded-circle  "
+          width="50"
+          style="padding: 0%; margin: 0%"
+          alt=""
+        />
+        <h3 class="m-0 navbar-crop text-light" style="">Crop Checkup</h3>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler me-0"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="/" class="nav-item nav-link text-light {% if request.path == '/' %}current{% endif %}">Home</a>
+          <a href="{% url 'prediction' %}" class="nav-item nav-link text-light {% if request.path == '/prediction' or request.path == '/after_proccess' or request.path == '/uploaded' or request.path == '/notlogin' %}current{% endif %}">Prediction</a>
+          <a href="{% url 'about' %}" class="nav-item nav-link text-light {% if request.path == '/about' %}current{% endif %}">About</a>
+          <a href="{% url 'service' %}" class="nav-item nav-link text-light {% if request.path == '/service' %}current{% endif %}">Services</a>
+          <a href="{% url 'contact' %}" class="nav-item nav-link text-light {% if request.path == '/contact' %}current{% endif %}">Contact</a>
+      </div>
+      
+      
+
+      {% if authenticate %}
+      <div class="dropdown text-center" style="padding-right: 3em">
+        <button class="btn dropdown-toggle">
+          {% if user.Profile.avatar %}
+          <img class="rounded-circle rounded-circle_profile" width="40px" src="{{ user.Profile.avatar.url }}" />
+          {% else %}
+          <img class="rounded-circle rounded-circle_profile" width="40px" src="{% static '/img/default.png' %}" />
+          {% endif %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{% url 'user' %}">Profile Setting</a>
+          <a class="dropdown-item" href="{% url 'logout_Page' %}">Log Out</a>
+        </div>
+      </div>
+      {% else %}
+      <div class="text-center">
+        <a class="btn btn-outline-light my-2 my-sm-0 " href="{% url 'signin' %}">Login</a>
+      </div>
+      {% endif %}
+      
+        <!-- <div class="border-start ps-4 d-none d-lg-block">
+                <button type="button" class="btn btn-sm p-0"><i class="fa fa-search"></i></button>
+            </div> -->
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    {% block body%}{%endblock body%}
+
+    <!-- Footer Start -->
+    <div
+      class="container-fluid footer mt-5 py-5 wow fadeIn"
+      style="background: rgb(16 52 19)"
+      data-wow-delay="0.1s"
+    >
+      <div class="container py-5">
+        <div class="row g-5">
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-4">Our Office</h5>
+            <p class="mb-2">
+              <i class="fa fa-map-marker-alt me-3"></i>Karachi, Pakistan
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>+92 3421129003
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>sddopenai@gmail.com
+            </p>
+            <div class="d-flex pt-3">
+              <a
+                class="btn btn-square btn-outline-primary rounded-circle me-2"
+                href=""
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                class="btn btn-square btn-outline-primary rounded-circle me-2"
+                href="https://www.facebook.com/sddopenai/"  target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                class="btn btn-square btn-outline-primary rounded-circle me-2"
+                href="https://www.youtube.com/@sddopenai" target="_blank"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                class="btn btn-square btn-outline-primary rounded-circle me-2"
+                href=""
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-4">Quick Links</h5>
+            <a class="btn btn-link" href="{%url 'about'%}">About Us</a>
+            <a class="btn btn-link" href="{%url 'contact'%}">Contact Us</a>
+            <a class="btn btn-link" href="{%url 'service'%}">Our Services</a>
+            <a class="btn btn-link" href="">Terms & Condition</a>
+            <a class="btn btn-link" href="">Support</a>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h5 class="text-white mb-4">Newsletter</h5>
+            <p>
+              An automated disease detection system is needed to help
+              distinguish plant infections by the plant's appearance and visual
+              manifestations could be of incredible assistance to novices in the
+              horticultural cycle..
+            </p>
+            <div class="position-relative w-100">
+              <input
+                class="form-control bg-transparent w-100 py-3 ps-4 pe-5"
+                type="text"
+                placeholder="Your email"
+              />
+              <button
+                type="button"
+                class="btn btn-outline-light py-2 position-absolute top-0 end-0 mt-2 me-2"
+              >
+                SignUp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid text-body copyright py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            &copy; <a class="fw-semi-bold" href="#">Sddopenai</a>, All Right
+            Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a
+      href="#"
+      class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+    <script src="https://cdn.plyr.io/3.6.8/plyr.youtube.js"></script>
+    <script>
+      const player = new Plyr("#player", {
+        youtube: { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3 },
+      });
+    </script>
+
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+    <script src="{% static 'js/image_upload.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+
+    <script>
+      (function ($) {
+        "use strict";
+
+        // Spinner
+        var spinner = function () {
+          setTimeout(function () {
+            if ($("#spinner").length > 0) {
+              console.log("its running");
+              $("#spinner").removeClass("show");
+            }
+          }, 1);
+        };
+        spinner();
+
+        // Initiate the wowjs
+        new WOW().init();
+
+        // Sticky Navbar
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 300) {
+            $(".sticky-top").addClass("shadow-sm").css("top", "0px");
+          } else {
+            $(".sticky-top").removeClass("shadow-sm").css("top", "-100px");
+          }
+        });
+
+        // Back to top button
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 100) {
+            $(".back-to-top").fadeIn("slow");
+          } else {
+            $(".back-to-top").fadeOut("slow");
+          }
+        });
+        $(".back-to-top").click(function () {
+          $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+          return false;
+        });
+
+        // Facts counter
+        $('[data-toggle="counter-up"]').counterUp({
+          delay: 10,
+          time: 2000,
+        });
+
+        // Testimonials carousel
+        $(".testimonial-carousel").owlCarousel({
+          autoplay: true,
+          smartSpeed: 1000,
+          items: 1,
+          dots: false,
+          loop: true,
+          nav: true,
+          navText: [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>',
+          ],
+        });
+      })(jQuery);
+
+      function progress() {
+        $(".progress_container").css("visibility", "visible");
+      }
+    </script>
+    <script>
+      var prediction_data = {{Disease_classification}};
+      var total = prediction_data.reduce(function(a, b) { return a + b; }, 0);
+
+      // Normalize the data
+      var normalized_data = prediction_data.map(function(x) { return x/total; });
+
+      var data = [  { "label": "Red Rot", "y":            normalized_data[4]*100 },
+        { "label": "Yellow Leaf Virus", "y":  normalized_data[7]*100  },
+        { "label": "Leaf rust", "y":          normalized_data[1]*100  },
+        { "label": "Leaf spot", "y":          normalized_data[2]*100  },
+        { "label": "White Fly", "y":          normalized_data[6]*100  },
+        { "label": "Red Rust", "y":           normalized_data[5]*100  },
+        { "label": "Bacterial Blight", "y":   normalized_data[0]*100  },
+        { "label": "Mite Insect", "y":        normalized_data[3]*100  }
+      ];
+
+      var ctx = document.getElementById("Piechart_JS").getContext("2d");
+
+      // Create the chart
+      var chart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+              datasets: [{
+                  data: [normalized_data[4]*100, normalized_data[7]*100, normalized_data[1]*100, normalized_data[2]*100, normalized_data[6]*100, normalized_data[5]*100, normalized_data[0]*100, normalized_data[3]*100],
+                  backgroundColor: ["#FF6384", "#36A2EB","#FFCE56","#4BC0C0","#9966FF","#FF9F40","#FDB45C","#FF6B6B"]
+              }],
+              labels: ["Red Rot", "Yellow Leaf Virus", "Leaf rust", "Leaf spot", "White Fly", "Red Rust", "Bacterial Blight", "Mite Insect"]
+          },
+          options: {
+              title: {
+                  display: true,
+                  text: 'Distribution of Sugarcane Leaf Diseases Detected'
+              },
+              legend: {
+                  display: true,
+                  position: 'bottom',
+              },
+              animation: {
+                  animateRotate: true,
+                  animateScale: false,
+              },
+              tooltips: {
+                  callbacks: {
+                      label: function(tooltipItem, data) {
+                          var dataset = data.datasets[tooltipItem.datasetIndex];
+                          var label = data.labels[tooltipItem.index];
+                          var value = dataset.data[tooltipItem.index];
+                          return label + ': ' + value.toFixed(2) + '%';
+                      }
+                  }
+              }
+          }
+      }); 
+
+    </script>
+    <script>
+      // Get the histogram data from the context variable
+      const histData = {{ hist|safe }};
+      const bins = {{ bins|safe }};
+      const equHistData = {{ equ_hist|safe }};
+      const equBins = {{ equ_bins|safe }};
+
+      // Create the histograms using Chart.js
+      const histChart = new Chart(document.getElementById('histogram').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: bins,
+          datasets: [{
+            label: 'Grayscale Image',
+            data: histData,
+            backgroundColor: '#5B8C51',
+            borderColor: '5B8C51',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+
+                yAxes: [{
+                  ticks: {
+                    max: 1500
+                  }
+                }],
+
+                xAxes: [{
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 20
+                  }
+                }]
+          }
+        }
+      });
+
+      const equHistChart = new Chart(document.getElementById('equalized-histogram').getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: equBins,
+          datasets: [{
+            label: 'Equalized Image',
+            data: equHistData,
+            backgroundColor: '#5B8C51',
+            borderColor: '#5B8C51',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+                ticks: {
+                  max: 1500
+                }
+              }],
+            xAxes: [{
+              ticks: {
+                autoSkip: true,
+                maxTicksLimit: 20
+              }
+            }]
+          }
+        }
+      });
+    </script>
+    <script>
+      var ctx = document.getElementById('myChart_contour').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: Array.from({length: 200}, (_, i) => i), // create an array with 0 to 200 values
+          datasets: [{
+            label: 'Number of Contours',
+            data: Array.from({length: 200}, (_, i) => i === {{Num_of_contour}} ? i : null), // create an array with 48 as the value and null for all other values
+            borderColor: '#5b8c51',
+            borderWidth: 1,
+            fill: false
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+        
+      });
+    </script>
+  </body>
+</html>
